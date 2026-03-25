@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../Shared/MotoRent.Communication/MotoRent.Communication.csproj" />
+    <ProjectReference Include="../../Shared/MotoRent.Exceptions/MotoRent.Exceptions.csproj" />
+    <ProjectReference Include="../MotoRent.Domain/MotoRent.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

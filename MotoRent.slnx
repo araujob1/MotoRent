@@ -1,0 +1,19 @@
+<Solution>
+    <Folder Name="/src/" />
+    <Folder Name="/src/Backend/">
+        <Project Path="src/Backend/MotoRent.Api/MotoRent.Api.csproj" />
+        <Project Path="src/Backend/MotoRent.Application/MotoRent.Application.csproj" />
+        <Project Path="src/Backend/MotoRent.Domain/MotoRent.Domain.csproj" />
+        <Project Path="src/Backend/MotoRent.Infrastructure/MotoRent.Infrastructure.csproj" />
+    </Folder>
+    <Folder Name="/src/Shared/">
+        <Project Path="src/Shared/MotoRent.Communication/MotoRent.Communication.csproj" />
+        <Project Path="src/Shared/MotoRent.Exceptions/MotoRent.Exceptions.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+        <Project Path="tests/Helpers.Test/Helpers.Test.csproj" />
+        <Project Path="tests/Integration.Test/Integration.Test.csproj" />
+        <Project Path="tests/UseCases.Test/UseCases.Test.csproj" />
+        <Project Path="tests/Validators.Test/Validators.Test.csproj" />
+    </Folder>
+</Solution>
