@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MotoRent.Domain.Repositories;
+using MotoRent.Domain.Repositories.Motorcycle;
 using MotoRent.Infrastructure.DataAccess;
+using MotoRent.Infrastructure.DataAccess.Repositories;
 using MotoRent.Infrastructure.Extensions;
 
 namespace MotoRent.Infrastructure;
@@ -43,5 +45,8 @@ public static class DependencyInjectionExtension
     private static void AddRepositories(IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+        services.AddScoped<IMotorcycleReadOnlyRepository, MotorcycleRepository>();
+        services.AddScoped<IMotorcycleWriteOnlyRepository, MotorcycleRepository>();
     }
 }
