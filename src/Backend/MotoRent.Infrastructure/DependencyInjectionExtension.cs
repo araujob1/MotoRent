@@ -1,3 +1,5 @@
+using System.Reflection;
+using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,7 @@ public static class DependencyInjectionExtension
         AddRepositories(services);
 
         AddDbContext(services, configuration);
+        AddFluentMigrator(services, configuration);
     }
 
     private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
@@ -24,6 +27,17 @@ public static class DependencyInjectionExtension
         {
             x.UseNpgsql(connectionString);
         });
+    }
+
+    private static void AddFluentMigrator(IServiceCollection services, IConfiguration configuration)
+    {
+        var connectionString = configuration.GetDbConnectionString();
+
+        services.AddFluentMigratorCore()
+            .ConfigureRunner(rb => rb
+                .AddPostgres()
+                .WithGlobalConnectionString(connectionString)
+                .ScanIn(Assembly.Load("MotoRent.Infrastructure")).For.All());
     }
 
     private static void AddRepositories(IServiceCollection services)

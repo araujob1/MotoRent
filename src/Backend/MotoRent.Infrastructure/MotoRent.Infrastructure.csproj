@@ -14,9 +14,13 @@
     <Folder Include="Configurations/" />
     <Folder Include="DataAccess/" />
     <Folder Include="Extensions/" />
+    <Folder Include="Migrations/" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.72" />
+    <PackageReference Include="FluentMigrator" Version="8.0.1" />
+    <PackageReference Include="FluentMigrator.Runner" Version="8.0.1" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
   </ItemGroup>
 
