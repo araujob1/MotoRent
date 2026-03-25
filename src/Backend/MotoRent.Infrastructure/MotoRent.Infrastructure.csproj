@@ -13,6 +13,7 @@
   <ItemGroup>
     <Folder Include="Configurations/" />
     <Folder Include="DataAccess/" />
+    <Folder Include="DataAccess/Repositories/" />
     <Folder Include="Extensions/" />
     <Folder Include="Migrations/" />
     <Folder Include="Migrations/Versions/" />

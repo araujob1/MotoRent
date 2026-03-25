@@ -10,6 +10,7 @@
     <Folder Include="Entities/" />
     <Folder Include="Extensions/" />
     <Folder Include="Repositories/" />
+    <Folder Include="Repositories/Motorcycle/" />
     <Folder Include="ValueObjects/" />
   </ItemGroup>
 
