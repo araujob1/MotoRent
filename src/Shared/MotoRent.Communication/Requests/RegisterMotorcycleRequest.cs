@@ -1,6 +1,6 @@
 namespace MotoRent.Communication.Requests;
 
-public record RegisterMotorcycleRequest(
+public sealed record RegisterMotorcycleRequest(
     string LicensePlate,
     string Vin,
     string Model,

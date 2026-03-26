@@ -1,3 +1,3 @@
 namespace MotoRent.Domain.ValueObjects;
 
-public record LicensePlate(string Value) : AlphanumericIdentifier(Value);
+public sealed record LicensePlate(string Value) : AlphanumericIdentifier(Value);
