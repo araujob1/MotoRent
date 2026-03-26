@@ -15,17 +15,23 @@
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 
+  <data name="ALREADY_EXISTS_LICENSE_PLATE" xml:space="preserve">
+    <value>Uma moto com esta placa já existe.</value>
+  </data>
+  <data name="ALREADY_EXISTS_VIN" xml:space="preserve">
+    <value>Uma moto com este VIN já existe.</value>
+  </data>
+  <data name="EMPTY_BRAND" xml:space="preserve">
+    <value>A marca deve ser informada.</value>
+  </data>
   <data name="EMPTY_LICENSE_PLATE" xml:space="preserve">
     <value>A placa da moto deve ser informada.</value>
-  </data>
-  <data name="EMPTY_VIN" xml:space="preserve">
-    <value>O VIN deve ser informado.</value>
   </data>
   <data name="EMPTY_MODEL" xml:space="preserve">
     <value>O modelo deve ser informado.</value>
   </data>
-  <data name="EMPTY_BRAND" xml:space="preserve">
-    <value>A marca deve ser informada.</value>
+  <data name="EMPTY_VIN" xml:space="preserve">
+    <value>O VIN deve ser informado.</value>
   </data>
   <data name="INVALID_YEAR" xml:space="preserve">
     <value>Por favor, forneça um ano válido.</value>

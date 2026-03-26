@@ -15,17 +15,23 @@
       Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 
+  <data name="ALREADY_EXISTS_LICENSE_PLATE" xml:space="preserve">
+    <value>A motorcycle with this license plate already exists.</value>
+  </data>
+  <data name="ALREADY_EXISTS_VIN" xml:space="preserve">
+    <value>A motorcycle with this VIN already exists.</value>
+  </data>
+  <data name="EMPTY_BRAND" xml:space="preserve">
+    <value>Brand must be provided.</value>
+  </data>
   <data name="EMPTY_LICENSE_PLATE" xml:space="preserve">
     <value>License plate must be provided.</value>
-  </data>
-  <data name="EMPTY_VIN" xml:space="preserve">
-    <value>VIN must be provided.</value>
   </data>
   <data name="EMPTY_MODEL" xml:space="preserve">
     <value>Model must be provided.</value>
   </data>
-  <data name="EMPTY_BRAND" xml:space="preserve">
-    <value>Brand must be provided.</value>
+  <data name="EMPTY_VIN" xml:space="preserve">
+    <value>VIN must be provided.</value>
   </data>
   <data name="INVALID_YEAR" xml:space="preserve">
     <value>Please provide a valid year.</value>

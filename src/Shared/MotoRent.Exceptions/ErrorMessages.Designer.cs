@@ -67,6 +67,39 @@ namespace MotoRent.Exceptions
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to A motorcycle with this license plate already exists..
+        /// </summary>
+        public static string ALREADY_EXISTS_LICENSE_PLATE
+        {
+            get
+            {
+                return ResourceManager.GetString("ALREADY_EXISTS_LICENSE_PLATE", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to A motorcycle with this VIN already exists..
+        /// </summary>
+        public static string ALREADY_EXISTS_VIN
+        {
+            get
+            {
+                return ResourceManager.GetString("ALREADY_EXISTS_VIN", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Brand must be provided..
+        /// </summary>
+        public static string EMPTY_BRAND
+        {
+            get
+            {
+                return ResourceManager.GetString("EMPTY_BRAND", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to License plate must be provided..
         /// </summary>
         public static string EMPTY_LICENSE_PLATE
@@ -74,17 +107,6 @@ namespace MotoRent.Exceptions
             get
             {
                 return ResourceManager.GetString("EMPTY_LICENSE_PLATE", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to VIN must be provided..
-        /// </summary>
-        public static string EMPTY_VIN
-        {
-            get
-            {
-                return ResourceManager.GetString("EMPTY_VIN", resourceCulture);
             }
         }
 
@@ -100,13 +122,13 @@ namespace MotoRent.Exceptions
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Brand must be provided..
+        ///   Looks up a localized string similar to VIN must be provided..
         /// </summary>
-        public static string EMPTY_BRAND
+        public static string EMPTY_VIN
         {
             get
             {
-                return ResourceManager.GetString("EMPTY_BRAND", resourceCulture);
+                return ResourceManager.GetString("EMPTY_VIN", resourceCulture);
             }
         }
 
