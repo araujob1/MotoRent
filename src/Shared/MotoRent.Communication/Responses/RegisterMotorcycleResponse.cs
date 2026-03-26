@@ -1,3 +1,3 @@
 namespace MotoRent.Communication.Responses;
 
-public record RegisterMotorcycleResponse(Guid Id);
+public sealed record RegisterMotorcycleResponse(Guid Id);
