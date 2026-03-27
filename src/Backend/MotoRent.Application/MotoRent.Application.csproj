@@ -12,4 +12,17 @@
     <ProjectReference Include="../MotoRent.Domain/MotoRent.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Mappings/" />
+    <Folder Include="UseCases/" />
+    <Folder Include="UseCases/Motorcycle/" />
+    <Folder Include="UseCases/Motorcycle/Register/" />
+    <Folder Include="Validators/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
+  </ItemGroup>
+
 </Project>
