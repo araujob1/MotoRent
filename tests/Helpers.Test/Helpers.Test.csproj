@@ -12,4 +12,16 @@
     <ProjectReference Include="../../src/Shared/MotoRent.Communication/MotoRent.Communication.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ClassData/" />
+    <Folder Include="Repositories/" />
+    <Folder Include="Requests/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.6.5" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="xunit.v3.extensibility.core" Version="3.2.2" />
+  </ItemGroup>
+
 </Project>
