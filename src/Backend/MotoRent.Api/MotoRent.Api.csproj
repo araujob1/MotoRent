@@ -17,4 +17,9 @@
     <ProjectReference Include="../MotoRent.Infrastructure/MotoRent.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions/" />
+    <Folder Include="Filters/" />
+  </ItemGroup>
+
 </Project>
