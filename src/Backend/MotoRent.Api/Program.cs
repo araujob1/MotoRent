@@ -1,3 +1,5 @@
+using MotoRent.Api.Filters;
+using MotoRent.Application;
 using MotoRent.Infrastructure;
 using MotoRent.Infrastructure.Extensions;
 using MotoRent.Infrastructure.Migrations;
@@ -6,7 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddExceptionHandler<MotoRentExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
@@ -14,6 +20,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseExceptionHandler();
 
 app.UseHttpsRedirection();
 
@@ -34,3 +42,4 @@ void MigrateDatabase()
 
     DatabaseMigration.Migrate(connectionString, serviceScope.ServiceProvider);
 }
+
