@@ -36,4 +36,7 @@
   <data name="INVALID_YEAR" xml:space="preserve">
     <value>Por favor, forneça um ano válido.</value>
   </data>
+  <data name="UNKNOWN_ERROR" xml:space="preserve">
+    <value>Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.</value>
+  </data>
 </root>
