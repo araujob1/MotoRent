@@ -142,5 +142,16 @@ namespace MotoRent.Exceptions
                 return ResourceManager.GetString("INVALID_YEAR", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred. Please try again later..
+        /// </summary>
+        public static string UNKNOWN_ERROR
+        {
+            get
+            {
+                return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
+            }
+        }
     }
 }
