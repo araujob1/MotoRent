@@ -1,4 +1,5 @@
 using MotoRent.Application.UseCases.Motorcycle.Register;
+using MotoRent.Api.Extensions;
 using MotoRent.Communication.Requests;
 using MotoRent.Communication.Responses;
 
@@ -15,7 +16,7 @@ public static class MotorcycleEndpoints
         {
             var result = await useCase.Execute(request);
 
-            return Results.Created(string.Empty, result);
+            return result.ToHttpResponse(value => Results.Created(string.Empty, value));
         })
         .WithName("RegisterMotorcycle")
         .WithSummary("Register a new motorcycle")
