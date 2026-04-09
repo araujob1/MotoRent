@@ -8,7 +8,7 @@ public abstract partial record AlphanumericIdentifier
 
     protected AlphanumericIdentifier(string value)
     {
-        Value = NonAlphanumericCharacters().Replace(value.ToUpperInvariant(), "");
+        Value = NonAlphanumericCharacters().Replace((value ?? string.Empty).ToUpperInvariant(), "");
     }
 
     [GeneratedRegex(@"[^A-Z0-9]")]
