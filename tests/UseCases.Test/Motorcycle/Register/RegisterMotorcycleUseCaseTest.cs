@@ -34,8 +34,9 @@ public class RegisterMotorcycleUseCaseTest
         var result = await useCase.Execute(request);
 
         result.IsFailure.ShouldBeTrue();
-        result.Error.ShouldBeOfType<ErrorOnValidationException>();
-        result.Error!.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
+        result.Error.ShouldNotBeNull();
+        result.Error.Code.ShouldBe("validation_error");
+        result.Error.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
         result.Error.Errors.ShouldSatisfyAllConditions(errors =>
         {
             errors.Count.ShouldBe(1);
@@ -53,8 +54,9 @@ public class RegisterMotorcycleUseCaseTest
         var result = await useCase.Execute(request);
 
         result.IsFailure.ShouldBeTrue();
-        result.Error.ShouldBeOfType<ErrorOnValidationException>();
-        result.Error!.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
+        result.Error.ShouldNotBeNull();
+        result.Error.Code.ShouldBe("validation_error");
+        result.Error.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
         result.Error.Errors.ShouldSatisfyAllConditions(errors =>
         {
             errors.Count.ShouldBe(1);
@@ -74,14 +76,53 @@ public class RegisterMotorcycleUseCaseTest
         var result = await useCase.Execute(request);
 
         result.IsFailure.ShouldBeTrue();
-        result.Error.ShouldBeOfType<ErrorOnValidationException>();
-        result.Error!.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
+        result.Error.ShouldNotBeNull();
+        result.Error.Code.ShouldBe("validation_error");
+        result.Error.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
         result.Error.Errors.ShouldSatisfyAllConditions(errors =>
         {
             errors.Count.ShouldBe(2);
             errors.ShouldContain(ErrorMessages.ALREADY_EXISTS_LICENSE_PLATE);
             errors.ShouldContain(ErrorMessages.ALREADY_EXISTS_VIN);
         });
+    }
+
+    [Fact]
+    public async Task Error_When_LicensePlate_Is_Null()
+    {
+        var request = RegisterMotorcycleRequestBuilder.Build() with
+        {
+            LicensePlate = null!
+        };
+
+        var useCase = CreateUseCase();
+
+        var result = await useCase.Execute(request);
+
+        result.IsFailure.ShouldBeTrue();
+        result.Error.ShouldNotBeNull();
+        result.Error.Code.ShouldBe("validation_error");
+        result.Error.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
+        result.Error.Errors.ShouldContain(ErrorMessages.EMPTY_LICENSE_PLATE);
+    }
+
+    [Fact]
+    public async Task Error_When_Vin_Is_Null()
+    {
+        var request = RegisterMotorcycleRequestBuilder.Build() with
+        {
+            Vin = null!
+        };
+
+        var useCase = CreateUseCase();
+
+        var result = await useCase.Execute(request);
+
+        result.IsFailure.ShouldBeTrue();
+        result.Error.ShouldNotBeNull();
+        result.Error.Code.ShouldBe("validation_error");
+        result.Error.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
+        result.Error.Errors.ShouldContain(ErrorMessages.EMPTY_VIN);
     }
 
     private static RegisterMotorcycleUseCase CreateUseCase(LicensePlate? licensePlate = null, Vin? vin = null)
@@ -99,5 +140,3 @@ public class RegisterMotorcycleUseCaseTest
         return new RegisterMotorcycleUseCase(unitOfWork, readOnly.Build(), writeOnly);
     }
 }
-
-
