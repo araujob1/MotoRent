@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Diagnostics;
 using MotoRent.Communication.Responses;
 using MotoRent.Exceptions;
@@ -11,26 +12,26 @@ public sealed class MotoRentExceptionHandler : IExceptionHandler
         Exception exception,
         CancellationToken cancellationToken)
     {
-        if (exception is MotoRentException motoRentException)
-            await HandleProjectException(motoRentException, httpContext, cancellationToken);
-        else
-            await ThrowUnknowException(httpContext, cancellationToken);
+        var error = exception switch
+        {
+            BadHttpRequestException => MotoRentError.BadRequest(ErrorMessages.INVALID_REQUEST),
+            JsonException => MotoRentError.BadRequest(ErrorMessages.INVALID_REQUEST),
+            _ => MotoRentError.Unknown()
+        };
+
+        await WriteErrorResponse(error, httpContext, cancellationToken);
 
         return true;
     }
 
-    private static async Task HandleProjectException(
-        MotoRentException motoRentException,
+    private static async Task WriteErrorResponse(
+        MotoRentError error,
         HttpContext context,
         CancellationToken cancellationToken)
     {
-        context.Response.StatusCode = (int)motoRentException.StatusCode;
-        await context.Response.WriteAsJsonAsync(new ErrorResponse(motoRentException.Errors), cancellationToken);
-    }
-
-    private static async Task ThrowUnknowException(HttpContext context, CancellationToken cancellationToken)
-    {
-        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-        await context.Response.WriteAsJsonAsync(new ErrorResponse([ErrorMessages.UNKNOWN_ERROR]), cancellationToken);
+        context.Response.StatusCode = (int)error.StatusCode;
+        await context.Response.WriteAsJsonAsync(
+            new ErrorResponse(error.Code, (int)error.StatusCode, error.Errors),
+            cancellationToken);
     }
 }
