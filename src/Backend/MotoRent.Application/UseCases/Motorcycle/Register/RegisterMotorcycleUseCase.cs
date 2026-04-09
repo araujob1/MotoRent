@@ -23,7 +23,7 @@ public class RegisterMotorcycleUseCase(
         var errors = await Validate(request);
 
         if (errors.Count > 0)
-            return Result<RegisterMotorcycleResponse>.Failure(new ErrorOnValidationException(errors));
+            return Result<RegisterMotorcycleResponse>.Failure(MotoRentError.Validation(errors));
 
         var motorcycle = request.ToEntity();
 
@@ -41,19 +41,24 @@ public class RegisterMotorcycleUseCase(
             .Select(e => e.ErrorMessage)
             .ToList();
 
-        var alreadyExistsWithLicensePlate = await _motorcycleReadOnlyRepository
-            .AlreadyExistsWithLicensePlate(new LicensePlate(request.LicensePlate));
+        if (request.LicensePlate.NotEmpty())
+        {
+            var alreadyExistsWithLicensePlate = await _motorcycleReadOnlyRepository
+                .AlreadyExistsWithLicensePlate(new LicensePlate(request.LicensePlate));
 
-        if (alreadyExistsWithLicensePlate.IsTrue())
-            errors.Add(ErrorMessages.ALREADY_EXISTS_LICENSE_PLATE);
+            if (alreadyExistsWithLicensePlate.IsTrue())
+                errors.Add(ErrorMessages.ALREADY_EXISTS_LICENSE_PLATE);
+        }
 
-        var alreadyExistsWithVin = await _motorcycleReadOnlyRepository
-            .AlreadyExistsWithVin(new Vin(request.Vin));
+        if (request.Vin.NotEmpty())
+        {
+            var alreadyExistsWithVin = await _motorcycleReadOnlyRepository
+                .AlreadyExistsWithVin(new Vin(request.Vin));
 
-        if (alreadyExistsWithVin.IsTrue())
-            errors.Add(ErrorMessages.ALREADY_EXISTS_VIN);
+            if (alreadyExistsWithVin.IsTrue())
+                errors.Add(ErrorMessages.ALREADY_EXISTS_VIN);
+        }
 
         return errors;
     }
 }
-

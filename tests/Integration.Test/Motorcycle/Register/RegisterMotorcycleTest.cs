@@ -67,7 +67,11 @@ public class RegisterMotorcycleTest : IntegrationTestBase
             .GetString("ALREADY_EXISTS_LICENSE_PLATE", new CultureInfo(culture));
 
         expectedErrorMessage.ShouldNotBeNull();
+        using var responseJson = JsonDocument.Parse(responseContent);
+
         response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
-        responseContent.ShouldContain(expectedErrorMessage);
+        responseJson.RootElement.GetProperty("code").GetString().ShouldBe("validation_error");
+        responseJson.RootElement.GetProperty("statusCode").GetInt32().ShouldBe((int)HttpStatusCode.BadRequest);
+        responseJson.RootElement.GetProperty("errors")[0].GetString().ShouldBe(expectedErrorMessage);
     }
 }
