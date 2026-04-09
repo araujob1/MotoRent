@@ -16,6 +16,7 @@
     <Folder Include="Mappings/" />
     <Folder Include="UseCases/" />
     <Folder Include="UseCases/Motorcycle/" />
+    <Folder Include="UseCases/Motorcycle/Filter/" />
     <Folder Include="UseCases/Motorcycle/Register/" />
     <Folder Include="Validators/" />
   </ItemGroup>
