@@ -42,7 +42,7 @@ namespace MotoRent.Exceptions
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MotoRent.Exceptions.ErrorMessages", typeof(ErrorMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MotoRent.Exceptions.Resources.ErrorMessages", typeof(ErrorMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -129,6 +129,28 @@ namespace MotoRent.Exceptions
             get
             {
                 return ResourceManager.GetString("EMPTY_VIN", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The request payload is invalid..
+        /// </summary>
+        public static string INVALID_REQUEST
+        {
+            get
+            {
+                return ResourceManager.GetString("INVALID_REQUEST", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Page size must be less than or equal to 100..
+        /// </summary>
+        public static string INVALID_PAGE_SIZE
+        {
+            get
+            {
+                return ResourceManager.GetString("INVALID_PAGE_SIZE", resourceCulture);
             }
         }
 
