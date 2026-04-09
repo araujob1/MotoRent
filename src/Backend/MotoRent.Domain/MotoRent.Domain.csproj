@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Dtos/" />
     <Folder Include="Entities/" />
     <Folder Include="Extensions/" />
+    <Folder Include="Pagination/" />
     <Folder Include="Repositories/" />
     <Folder Include="Repositories/Motorcycle/" />
     <Folder Include="ValueObjects/" />
